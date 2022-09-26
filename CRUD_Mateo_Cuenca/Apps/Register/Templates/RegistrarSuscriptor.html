@@ -1,0 +1,87 @@
+{% extends './base.html' %}
+
+{% block title%}
+CRUD Mateo Cuenca
+{% endblock %}
+{% block body %}
+{% if messages %}
+{% for message in messages %}
+<div class="alert alert-dismissible alert-success">
+    <strong class="text-dark">{{ message }}</strong>
+</div>
+{% endfor %}
+{% endif %}
+<div class="raw">
+    <h2>Datos del Suscriptor</h2>
+    <p>Para realizar la suscripcion complete los siguientes datos</p>
+
+    <form action="registrarSuscriptor/" method="POST">{% csrf_token %}
+    <div class="">
+            <table class="table table-borderless">
+                <thead>
+                    <tr>
+                        <td>
+                          <label for="tipoDocumento" class="form-label">Tipo de Documento</label>
+                          <input type="text" class="form-control" id="tipoDocumento" value="{{tipoDocumento}}" name="tipoDocumento" readonly></input>
+                        </td>
+                        <td>
+                          <label for="numDocumento" class="form-label">Documento</label>
+                          <input type="number" class="form-control" id="numDocumento" value="{{numDocumento}}" name="numDocumento" readonly></select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="txtNombre" class="form-label">Nombre</label>
+                            <input type="text" class="form-control" id="txtNombre" name="txtNombre" required>
+                        </td>
+                        <td>
+
+                            <label for="txtApellido" class="form-label">Apellido</label>
+                            <input type="text" class="form-control" id="txtApellido" name="txtApellido" required>
+                        </td>
+                    </tr>
+                  <tr>
+                    <td>
+                        <label for="txtDireccion" class="form-label">Direccion</label>
+                        <input type="text" class="form-control" id="txtDireccion" name="txtDireccion" required>
+                    </td>
+                    <td>
+                        <label for="email" class="form-label">Email</label>
+                        <input type="email" class="form-control" id="email" name="email" required>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                        <label for="numTelefono" class="form-label">Telefono</label>
+                        <input type="number" class="form-control" id="numTelefono" name="numTelefono" required>
+                    </td>
+                    <td>
+                        <select type="text" class="form-control" id="Estado" name="Estado" disabled>
+                            <option value="noSuscripto">No suscripto</option>
+                            <option value="Suscripto">Suscripto</option>
+                    </td>
+                    <td>
+                        <a href='/'  type="submit" class="btn btn-danger">Cancelar</a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                        <label for="txtNombreUsuario" class="form-label">Nombre de Usuario</label>
+                        <input type="text" class="form-control" id="txtNombreUsuario" name="txtNombreUsuario" required>
+                    </td>
+                    <td>
+                        <label for="password" class="form-label">Contraseña</label>
+                        <input type="password" class="form-control" id="password" name="password" required>
+                    </td>
+                    <td>
+                        <button type="submit" class="btn btn-success">Registrar</button>
+                    </td>
+                  </tr>
+                </thead>
+
+    </div>
+  </form>
+
+</div>
+{{form.as_table}}
+{% endblock %}
